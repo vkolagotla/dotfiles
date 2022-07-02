@@ -1,0 +1,83 @@
+#!/bin/bash
+##################################################################################
+# Shellscript : .zsh_functons                                            .--.    #
+# Author      : Venkata Kolagotla <vkolagotla@pm.me>                    |ö_ö |   #
+# Created     : 02-07-2022                                              |\ü/ |   #
+# Last Updated: 03-07-2022                                             //   \ \  #
+# Requires    : misc                                                  (|     | ) #
+# Category    : dotfile                                              /'\_   _/`\\#
+# Version     : v0.1.0                                               \___)=(___//#
+# License     : GNU GPLv3                                                        #
+##################################################################################
+# Description : custom functions for zsh
+# Usage       : source this file in your .zshrc by adding ". ~/.zsh_functions"
+##################################################################################
+
+# reduce a jpeg size twice(50%), strip EXIF tags and make them progressive
+fotovonjpg() {
+    for img_name in $@
+    do
+        echo "Compressing $img_name now... \c"
+        # reduce size by 50%
+        mogrify -resize 50% $img_name
+        # reduce size by 50%
+        mogrify -resize 50% $img_name
+        # reduce size by 50%
+        mogrify -resize 50% $img_name
+        # strip EXIF data
+        mogrify -strip $img_name
+        # make jpg progressive to load fast
+        parallel -X mogrify -interlace plane ::: $img_name
+        echo "Done"
+    done
+    echo "Done with all images"
+}
+
+# fix vpn connection
+fixvpn() {
+    # disconnect previous connection
+    protonvpn-cli d
+    sleep 3
+    # switch off killswitch from network manager
+    protonvpn-cli ks --off
+    sleep 3
+    # flip the killswitch back on
+    protonvpn-cli ks --on
+    sleep 3
+    # connect to the fastest vpn connection
+    protonvpn-cli c -f
+    # check connection speed
+    echo "Checking connection Speed: "
+    fast
+}
+
+# git function to add everything and push to remote
+gacp() {
+  git add .
+  git commit -m "$1"
+  git push
+}
+
+# remove last commit from remote and local
+grmcommit() {
+    git reset --hard HEAD~"$1"
+    git push origin +HEAD
+}
+
+# count files in a dir
+count() {
+    # Usage: count /path/to/dir/*
+    #        count /path/to/dir/*/
+    printf '%s\n' "$#"
+}
+
+# print the weather in a prettier way
+wetter() {
+    curl -s wttr.in/$1 | head -n 7 && printf "\n"
+}
+
+# Set terminal title
+set-title(){
+  TITLE="\[\e]2;$*\a\]"
+  echo -e ${TITLE}
+}

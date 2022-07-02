@@ -1,0 +1,84 @@
+#!/bin/bash
+##################################################################################
+# Shellscript : .zsh_aliases                                             .--.    #
+# Author      : Venkata Kolagotla <vkolagotla@pm.me>                    |ö_ö |   #
+# Created     : 02-07-2022                                              |\ü/ |   #
+# Last Updated: 03-02-2022                                             //   \ \  #
+# Requires    : misc                                                  (|     | ) #
+# Category    : dotfile                                              /'\_   _/`\\#
+# Version     : v0.1.0                                               \___)=(___//#
+# License     : GNU GPLv3                                                        #
+##################################################################################
+# Description : custom zsh aliases
+# Usage       : source this file in your .zshrc file by adding ". ~/.zsh_aliases"
+##################################################################################
+# protonvpn connections
+alias fvpn="protonvpn-cli c -f; echo 'Checking connection Speed: '; fast"
+alias rvpn="protonvpn-cli c -r; echo 'Checking connection Speed: '; fast"
+alias nlvpn="protonvpn-cli c --cc NL; echo 'Checking connection Speed: '; fast"
+alias usvpn="protonvpn-cli c --cc US; echo 'Checking connection Speed: '; fast"
+alias jpvpn="protonvpn-cli c --cc JP; echo 'Checking connection Speed: '; fast"
+alias dvpn="protonvpn-cli d"
+alias svpn="protonvpn-cli s; echo 'Checking connection Speed: '; fast"
+alias killvpn="protonvpn-cli d; protonvpn-cli ks --off"
+alias rkillswvpn="protonvpn-cli ks --off; sleep 5; protonvpn-cli ks --on"
+# todo list for task
+alias todo="task add"
+alias todolist="task list"
+alias tododel="task del"
+# find alias with grep
+alias find_alias="alias | grep $1"
+# start macOS on QEMU
+alias macos="~/KVM/macOS/basic.sh"
+# git summanry for each user repos
+# git-summary(vk)
+alias gsum="git-summary -l"
+# use mysudo to exe mac_change
+alias mac_changer="mysudo mac_changer"
+# print all local shells
+alias myshells="ls ~/bin/"
+# use mysudo to exe upgrade_sys
+alias upgrade_sys="mysudo upgrade_sys"
+# open zshrc file in vscode
+alias zshconfig_o="code ~/.zshrc"
+# source zshrc file
+alias zshconfig_s="source ~/.zshrc"
+# print local ip address
+alias myip="curl http://ipecho.net/plain; echo"
+# print current ubuntu version
+alias ostype="cat /etc/*-release | grep DISTRIB_DESCRIPTION"
+# restart gnome shell
+alias gnome_restart="killall -HUP gnome-shell"
+# copy/paste clipboard content to/from a file
+#+(creates a new one if doesn't exist)
+alias cpx='printf %s "$(history -p !!)" | xsel --clipboard'
+# copies contents of a file to clipboard
+alias clipcopy="xclip -selection clipboard"
+# pick any color on screen with pointer selection
+alias colorpick="farge --notify"
+# print full date from day to seconds
+alias fulldate="date '+%d-%m-%Y-%H-%M-%S'"
+# run docker python3.8
+alias dcpy38="docker run -it python:3.8 bash"
+# install tar.gz file
+alias install_tar="sudo tar -xvzf"
+# install zip file
+alias install_zip="sudo unzip"
+# install deb file
+alias install_deb="sudo dpkg -i"
+# install rpm file
+alias install_rpm="sudo rpm -i"
+# open file explorer via nautilus in terminal
+alias open="nautilus --no-desktop --no-default-window"
+# create qrcode from text and display it in terminal
+alias genqr="qrencode -t ansiutf8"
+# keybase fs operations
+alias kbfsups="keybase fs uploads"
+# remove a ppa repo
+alias remove_ppa="sudo add-apt-repository --remove"
+# restart bluetooth service
+alias btooth_rst="sudo systemctl restart bluetooth.service"
+# restart wireless service
+alias wifi_rst="nmcli radio wifi off && sleep 5 && nmcli radio wifi on && fast"
+# install pkg with apt
+alias getme="sudo apt install -y"
