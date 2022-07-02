@@ -1,14 +1,12 @@
 #!/bin/zsh
 ##################################################################################
-# Shellscript : .zshrc                              					 .--.    #
+# Shellscript : .zshrc                                                   .--.    #
 # Author      : Venkata Kolagotla <vkolagotla@pm.me>                    |ö_ö |   #
 # Created     : 18-11-2020                                              |\ü/ |   #
-# Last Updated: 03-07-2022                                         	   //   \ \  #
-# Requires    : zsh, oh-my-zsh, conda, tmux, hadoop, fast, farge,     (|     | ) #
-#               git-summany script, imagemagik, protonvpn, jrnl,     /'\_   _/`\\#
-#               code, go, terminal.py script, qrencode               \___)=(___//#
-# Category    : configuration file                                               #
-# Version     : v0.4.6                                                           #
+# Last Updated: 03-07-2022                                             //   \ \  #
+# Requires    : misc                                                  (|     | ) #
+# Category    : configuration file                                   /'\_   _/`\\#
+# Version     : v0.4.6                                               \___)=(___//#
 # License     : GNU GPLv3                                                        #
 ##################################################################################
 # Description : zsh configuration
